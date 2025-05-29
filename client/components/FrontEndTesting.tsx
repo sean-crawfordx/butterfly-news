@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { getAIStory } from '../apis/geminiApiClient'
 
 function FrontEndTesting() {
-  const { data, isPending, isError, error } = useQuery({
+  const { data, isPending, isError } = useQuery({
     queryKey: ['getAIStory'],
     queryFn: () => getAIStory('test date', 'Any topic'),
   })
@@ -12,13 +12,16 @@ function FrontEndTesting() {
   }
 
   if (isError) {
-    return <p>{`Error: ${error.message}`}</p>
+    return <p>There was an error loading data.</p>
   }
 
   return (
     <>
       <div className="app">
-        <p>{`Ai response is ${data}`}</p>
+        <h2>{data.heading}</h2>
+        {data.body.split('\n').map((line, i) => {
+          return <p key={i}>{line}</p>
+        })}
       </div>
     </>
   )
