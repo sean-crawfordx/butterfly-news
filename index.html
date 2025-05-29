@@ -4,10 +4,35 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Fruits</title>
+    <title>Butterfly News</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./client/styles/main.css" />
   </head>
+
   <body>
+    <hr class="line" />
+
+    <header class="header">
+      <div class="headline">
+        <div class="icon-letf">☰</div>
+        <h1>Butterfly News</h1>
+      </div>
+    </header>
+    <input class="date" type="date" id="date-input" />
+    <main class="content">
+      <section class="featured">
+        <p class="lead" id="lead">
+          Please wait while we fetch the latest news...
+        </p>
+      </section>
+
+      <section class="grid" id="news-grid">
+        <!-- News articles will be dynamically inserted here -->
+      </section>
+    </main>
     <div id="app"></div>
     <script src="./client/index.tsx" type="module"></script>
   </body>
