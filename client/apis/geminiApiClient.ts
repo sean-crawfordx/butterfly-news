@@ -7,11 +7,12 @@ import request from 'superagent'
 
 const rootURL = new URL('/api/v1', document.baseURI)
 
-export async function getAIStory(date, input: string) {
-  // Give date a type.
-  // I think the 'Date' type should work here.
+export async function getAIStory(date: string, input: string) {
+  const defaultDate = 'today'
+  const defaultInput = 'any random event occurring'
+
   const response = await request.get(
-    `${rootURL}/proxy/gemini?date=${date}&input=${input}`,
+    `${rootURL}/proxy/gemini?date=${date || defaultDate}&input=${input || defaultInput}`,
   )
   // console.log('getATStory called, response is ', response)
   return response.text // as something - once I've sorted out the types.
