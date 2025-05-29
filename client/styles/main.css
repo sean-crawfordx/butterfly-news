@@ -1,0 +1,38 @@
+body {
+  background-color: rgb(251, 242, 230);
+}
+.headline {
+  font-family: 'UnifrakturCook', cursive;
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+  color: rgb(139, 3, 3);
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+}
+.line {
+  border-top: 1px solid #b8b6b6;
+
+}
+.icon-letf {
+  position: absolute;
+  left: 0;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0 15px;
+  user-select: none;
+}
+.date {
+  font-family: 'Georgia', serif;
+  font-size: 16px;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  margin: 10px 0;
+  background-color: #f9f9f9;
+}
+
+.date:focus {
+  border-color: #000;
+}
