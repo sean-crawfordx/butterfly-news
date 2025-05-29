@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 
     //  // UNCOMMENT THIS ONCE PARAMS ARE CONFIGURED
     // const date = req.query.date
-    // const userInput = req.query.userInput
+    // const input = req.query.input
     // if (!date || !userInput) {
     //   console.log('Query params (date and userInput) are not defined properly.')
     //   return res.sendStatus(500)
@@ -41,7 +41,8 @@ router.get('/', async (req, res) => {
       return res.sendStatus(500)
     }
     const aiTextResponse = response.candidates[0].content.parts[0].text
-    return res.status(200).send(aiTextResponse)
+    console.log('aiTextResponse is ', aiTextResponse)
+    return res.send(aiTextResponse)
   } catch (error) {
     if (error instanceof Error) {
       return res.sendStatus(500)
