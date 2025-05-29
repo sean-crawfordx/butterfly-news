@@ -18,16 +18,16 @@ router.get('/', async (req, res) => {
     console.log('tying to get gemini api response from google ai..') // TEST LOG
 
     //  // UNCOMMENT THIS ONCE PARAMS ARE CONFIGURED
-    // const date = req.query.date
-    // const input = req.query.input
-    // if (!date || !userInput) {
-    //   console.log('Query params (date and userInput) are not defined properly.')
-    //   return res.sendStatus(500)
-    // }
+    const date = req.query.date
+    const userInput = req.query.input
+    if (!date || !userInput) {
+      console.log('Query params (date and userInput) are not defined properly.')
+      return res.sendStatus(500)
+    }
 
     const response = await genAI.models.generateContent({
       model: 'gemini-2.0-flash',
-      contents: `This is a placeholder prompt for an API request - give me a fun fact! Could you also preface with a note of something along the lines of I'm a placeholder response that will change when api is configured!`, //  ADD LOGIC HERE TO MAKE USE OF QUERY PARAMS
+      contents: `Generate a fake news article from ${date} as what would have happened if ${userInput}, make it outrageous and slightly humorous`, //  THIS VALUE CAN BE IMPROVED IF NEEDWED
     })
     if (
       !response ||
