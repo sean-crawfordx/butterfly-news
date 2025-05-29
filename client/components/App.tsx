@@ -1,14 +1,9 @@
-import { useFruits } from '../hooks/useFruits.ts'
+// All other components will be exported into this component in some way - make use of react routing and <Outlet /> s.
 
 function App() {
-  const { data } = useFruits()
-
   return (
     <>
-      <div className="app">
-        <h1>Fullstack Boilerplate - with Fruits!</h1>
-        <ul>{data && data.map((fruit) => <li key={fruit}>{fruit}</li>)}</ul>
-      </div>
+      <div className="app"></div>
     </>
   )
 }
