@@ -10,13 +10,7 @@ function Nav({ selectedDate, onDateChange }: NavProps) {
   return (
     <header className="header">
       {/*  */}
-      <input
-        className="date"
-        type="date"
-        id="date-input"
-        value={selectedDate}
-        onChange={onDateChange}
-      />
+      <input className="date" type="date" id="date-input" value="2025-05-30" />
     </header>
   )
 }

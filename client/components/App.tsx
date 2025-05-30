@@ -1,8 +1,7 @@
 // All other components will be exported into this component in some way - make use of react routing and <Outlet /> s.
-
 import { useState } from 'react'
 import FrontEndTesting from './FrontEndTesting'
-// import News from './StoryPreviewBox'
+import News from './StoryPreviewBox'
 import Nav from './Nav'
 import { useQuery } from '@tanstack/react-query'
 import { getNews } from '../apis/nytApiClient'
@@ -43,24 +42,10 @@ function App() {
       <Nav selectedDate={selectedDate} onDateChange={handleDateChange} />
 
       <main className="content">
-        <section className="featured">
-          <p className="lead" id="lead">
-            Please wait while we fetch the latest news...
-          </p>
-        </section>
+        <section className="featured"></section>
 
         <section className="grid" id="news-grid">
           {/* News articles will be inserted here */}
-
-          {filteredStories.map((story, index) => (
-            <StoryPreviewBox
-              key={index}
-              title={story.title}
-              summary={story.summary}
-              date={story.date}
-              url={story.url}
-            />
-          ))}
         </section>
       </main>
 

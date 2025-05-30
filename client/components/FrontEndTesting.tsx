@@ -42,7 +42,7 @@ function FrontEndTesting() {
           return <p key={i}>{line}</p>
         })}
       </div>
-      <div>
+      {/* <div>
         {placeholder.map((x, i) => {
           return (
             <>
@@ -51,7 +51,7 @@ function FrontEndTesting() {
             </>
           )
         })}
-      </div>
+      </div> */}
       <div id="formDiv">
         <form onSubmit={handleSubmit} className="form">
           <label htmlFor="prompt">Change the news: </label>
