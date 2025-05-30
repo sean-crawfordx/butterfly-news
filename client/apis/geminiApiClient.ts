@@ -9,7 +9,6 @@
 
 import request from 'superagent'
 import { isNonNullObject } from '../modules/util'
-import { News } from '../../models/news'
 
 const rootURL = new URL('/api/v1', document.baseURI)
 
@@ -47,9 +46,4 @@ export async function getAIStory(date: string, input: string) {
       throw new Error('Unknown error calling AI API')
     }
   }
-}
-
-export async function getNews() {
-  const response = await request.get(`${rootURL}`)
-  return response.body as News
 }
