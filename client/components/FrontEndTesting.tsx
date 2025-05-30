@@ -1,18 +1,37 @@
 import { useQuery } from '@tanstack/react-query'
 import { getAIStory } from '../apis/geminiApiClient'
+import { useState } from 'react'
+import placeholder from '../../placeholdernews.json'
 
 function FrontEndTesting() {
-  const { data, isPending, isError } = useQuery({
+  const [formState, setFormState] = useState({ prompt: 'any topic' })
+  const [date, setDate] = useState('2025-05-30')
+
+  const { data, isPending, isError, refetch } = useQuery({
     queryKey: ['getAIStory'],
-    queryFn: () => getAIStory('test date', 'Any topic'),
+    queryFn: () => getAIStory(date, formState.prompt),
   })
 
   if (isPending) {
-    return <p>Pending AI response</p>
+    return <p>Loading the news</p>
   }
 
   if (isError) {
     return <p>There was an error loading data.</p>
+  }
+
+  async function handleSubmit(evt: FormEvent<HTMLFormElement>) {
+    evt.preventDefault()
+    console.log('submit', formState.prompt, date)
+    refetch()
+  }
+
+  function handleChange(evt: ChangeEvent<HTMLInputElement>) {
+    const { name, value } = evt.currentTarget
+    setFormState((prev) => ({ ...prev, [name]: value }))
+  }
+  function handleDate(evt: ChangeEvent<HTMLInputElement>) {
+    setDate(evt.target.value)
   }
 
   return (
@@ -22,6 +41,37 @@ function FrontEndTesting() {
         {data.body.split('\n').map((line, i) => {
           return <p key={i}>{line}</p>
         })}
+      </div>
+      <div>
+        {placeholder.map((x, i) => {
+          return (
+            <>
+              <h2 key={'h' + i}>{x.heading}</h2>
+              <p key={'p' + i}>{x.body}</p>
+            </>
+          )
+        })}
+      </div>
+      <div id="formDiv">
+        <form onSubmit={handleSubmit} className="form">
+          <label htmlFor="prompt">Change the news: </label>
+          <input
+            name="prompt"
+            id="prompt"
+            value={formState.prompt}
+            onChange={handleChange}
+            autoComplete="off"
+          />
+          <button onClick={handleChange}>ENTER</button>
+          <span> On the date: </span>
+          <input
+            className="date"
+            type="date"
+            id="date-input"
+            value={date}
+            onChange={handleDate}
+          />
+        </form>
       </div>
     </>
   )
