@@ -66,7 +66,12 @@ function App() {
     </main>
     
       <div className="app">
-        <p>{`${data}`}</p>
+
+        <FrontEndTesting />
+        {/* <News /> */}
+
+       
+ 
       </div>
     </>
   )
