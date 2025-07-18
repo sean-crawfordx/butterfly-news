@@ -18,10 +18,15 @@ router.get('/', async (req, res) => {
       .get('https://api.nytimes.com/svc/archive/v1/2024/1.json')
       .query({ 'api-key': process.env.NYT_API_KEY })
     console.log('SERVER TEST LOG. full NYT response= ', response)
-    return res.json(response.body)
+   return res.json(response.body)
+
+
+    //return res.json(response.body)
   } catch (error) {
-    console.log('Caught an error - unknown')
-    return res.json({ error: 'Unknown Error' })
+   console.log('Caught an error - unknown')
+return res.json({ error: 'Unknown Error' })
+
+
   }
 })
 
